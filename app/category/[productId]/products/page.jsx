@@ -5,7 +5,8 @@ export default async function page({ params }) {
   console.log(API_URL);
 
   const res = await fetch(`${API_URL}/api/category/${productId}/products`, {
-    next: { revalidate: 1 },
+    cache: "force-cache",
+    next: { revalidate: 10 },
   });
   const data = await res.json();
 
