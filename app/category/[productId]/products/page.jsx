@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { cacheTag } from "next/cache";
 
 export default async function page({ params }) {
   const API_URL = process.env.API_URL;
@@ -7,8 +8,8 @@ export default async function page({ params }) {
   console.log(API_URL);
 
   const res = await fetch(`${API_URL}/api/category/${productId}/products`, {
-    cache: "force-cache",
-    next: { revalidate: 10 },
+    next: { revalidate: 100 },
+    tags: [productId],
   });
   const data = await res.json();
 
@@ -23,7 +24,7 @@ export default async function page({ params }) {
       </Link>
       <div className="bg-gray-400 rounded p-4 flex flex-col gap-2">
         <h1 className="text-center font-semibold text-xl text-black">
-          Products
+          7 Products
         </h1>
         {data.map((a) => (
           <div
