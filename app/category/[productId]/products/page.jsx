@@ -1,5 +1,3 @@
-import React from "react";
-
 export default async function page({ params }) {
   const API_URL = process.env.API_URL;
   const { productId } = await params;
@@ -7,7 +5,7 @@ export default async function page({ params }) {
   console.log(API_URL);
 
   const res = await fetch(`${API_URL}/api/category/${productId}/products`, {
-    next: { revalidate: 10 },
+    next: { revalidate: 1 },
   });
   const data = await res.json();
 
