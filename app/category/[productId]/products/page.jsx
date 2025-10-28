@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default async function page({ params }) {
   const API_URL = process.env.API_URL;
   const { productId } = await params;
@@ -14,6 +16,11 @@ export default async function page({ params }) {
 
   return (
     <div className="flex flex-col gap-2 min-h-screen items-center justify-center">
+      <Link href="/">
+        <button className="px-4 py-2 bg-blue-200 rounded text-black">
+          Go Home
+        </button>
+      </Link>
       <div className="bg-gray-400 rounded p-4 flex flex-col gap-2">
         <h1 className="text-center font-semibold text-xl text-black">
           Products

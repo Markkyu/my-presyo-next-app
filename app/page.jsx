@@ -10,6 +10,10 @@ export default async function Home() {
   });
   const data = await res.json();
 
+  // const res = await fetch(`${process.env.VERCEL_URL}/api/category`);
+
+  // const data = await res.json();
+
   return (
     <div className="flex flex-col gap-2 min-h-screen items-center justify-center">
       <div className="flex flex-col gap-2 w-full max-w-xl px-10 py-4 rounded bg-gray-400">
