@@ -5,7 +5,7 @@ export default async function page({ params }) {
   const { productId } = await params;
 
   const res = await fetch(
-    `http://localhost:3001/api/category/${productId}/products`
+    `https://my-presyo-next-app.vercel.app/api/category/${productId}/products`
   );
 
   const data = await res.json();
