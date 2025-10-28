@@ -2,18 +2,25 @@ import Link from "next/link";
 import { cacheTag } from "next/cache";
 
 export default async function page({ params }) {
-  const API_URL = process.env.API_URL;
   const { productId } = await params;
 
-  console.log(API_URL);
+  const res = await fetch(
+    `http://localhost:3001/api/category/${productId}/products`
+  );
 
-  const res = await fetch(`${API_URL}/api/category/${productId}/products`, {
-    next: { revalidate: 100 },
-    tags: [productId],
-  });
   const data = await res.json();
 
-  console.log(productId);
+  //   const API_URL = process.env.API_URL;
+
+  //   console.log(API_URL);
+
+  //   const res = await fetch(`${API_URL}/api/category/${productId}/products`, {
+  //     next: { revalidate: 100 },
+  //     tags: [productId],
+  //   });
+  //   const data = await res.json();
+
+  //   console.log(productId);
 
   return (
     <div className="flex flex-col gap-2 min-h-screen items-center justify-center">
@@ -24,7 +31,7 @@ export default async function page({ params }) {
       </Link>
       <div className="bg-gray-400 rounded p-4 flex flex-col gap-2">
         <h1 className="text-center font-semibold text-xl text-black">
-          7 Products
+          Products
         </h1>
         {data.map((a) => (
           <div
